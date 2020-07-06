@@ -5,38 +5,32 @@
  */
 package josefus;
 
+import javax.swing.JTextArea;
+
 /**
  *
- * @author Cristian Ovalles
+ * @author asus
  */
 public class Josefus {
 
     Node head;
     ListOperations list;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Josefus cicle = new Josefus();
-    }
+    public Josefus(String[] nombres,int salto, JTextArea area) {
 
-    public Josefus() {
-        
         this.head = null;
 
-        list = new ListOperations();
+        list = new ListOperations(area);
 
-        String[] nombres = {"Pedro", "Juan", "Marco", "Natalia","Leidy","Sebastián","Julián"};
+        //String[] nombres = {"Pedro", "Juan", "Marco", "Natalia", "Leidy", "Sebastián", "Julián"};
 
         int size = nombres.length;
-        
+
         for (int i = 0; i < size; i++) {
             head = list.enQueue(head, nombres[i]);
         }
         System.out.println("Lista inicial");
-        list.print(head);
-        list.josephus(head,4);
+        //list.print(head);
+        list.josephus(head, salto);
     }
-    
 }

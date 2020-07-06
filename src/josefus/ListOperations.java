@@ -1,11 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package josefus;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+
 public class ListOperations {
+    JTextArea area;
+    public ListOperations(JTextArea area){
+        this.area=area;
+    }
+    
      public Node findTail(Node head) {
         Node tail = head;
 
@@ -34,7 +38,6 @@ public class ListOperations {
 
         }
 
-        //print(head);
         return head;
     }
 
@@ -47,7 +50,8 @@ public class ListOperations {
 
             head = next;
             tail.setNext(head);
-
+            
+            area.append("Sacando de la cola a "+dequeued.getData()+"\n");
             System.out.println("Sacando de la cola a "+dequeued.getData());
             
             return head;
@@ -57,6 +61,7 @@ public class ListOperations {
     }
 
     public void josephus(Node head, int size) {
+        area.append("Iniciando Josephus con ciclo de "+size+"\n");
             System.out.println("Iniciando Josephus con ciclo de "+size);
         while (!head.getNext().equals(head)) {
             Node selected = head;
@@ -69,6 +74,8 @@ public class ListOperations {
             print(head);
         }
         
+        JOptionPane.showMessageDialog(null,"El ganador es: "+head.getData() );
+        area.append("finalizado " + head.getData());
         System.out.println("finalizado " + head.getData());
     }
 
@@ -77,11 +84,13 @@ public class ListOperations {
 
         if (q != null) {
             do {
+                area.append(q.getData() + " ");
                 System.out.print(q.getData() + " ");
                 q = q.getNext();
             } while (q != head);
         }
 
+        area.append("\n");
         System.out.println();
     }
 
